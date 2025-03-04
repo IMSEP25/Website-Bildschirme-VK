@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatische Bildrotation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hier wird das erste Bild geladen -->
+    <img id="slideshow" src="Bilder/Bild1.png" alt="Statistik Bild">
+    <script>
+        // Hier fügst du deine eigenen Bildpfade ein
+        const bilder = [
+            "Bilder/Bild1.png",  // Ersetze mit deinem Bildpfad
+            "Bilder/Bild2.png",  // Ersetze mit deinem Bildpfad
+        ];
+        
+        let index = 0;
+
+        function wechselBild() {
+            index = (index + 1) % bilder.length;
+            document.getElementById("slideshow").src = bilder[index];
+        }
+
+        // Hier stellst du das Intervall ein (30 Sekunden = 30000 Millisekunden)
+        setInterval(wechselBild, 30000);
+    </script>
+</body>
+</html>
