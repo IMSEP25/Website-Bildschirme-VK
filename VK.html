@@ -11,33 +11,30 @@
             align-items: center;
             height: 100vh;
             background-color: #222;
+            margin: 0;
         }
         img {
-            max-width: 80%;
-            height: auto;
+            max-width: 80vw;
+            max-height: 80vh;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            object-fit: contain;
         }
     </style>
 </head>
 <body>
-    <!-- Hier wird das erste Bild geladen -->
-    <img id="slideshow" src="Bilder/Bild1.png" alt="Statistik Bild">
+    <img id="slideshow" src="Bild1.png" alt="Bild2.png">
+
     <script>
-        // Hier fügst du deine eigenen Bildpfade ein
-        const bilder = [
-            "Bilder/Bild1.png",  // Ersetze mit deinem Bildpfad
-            "Bilder/Bild2.png",  // Ersetze mit deinem Bildpfad
-        ];
-        
+        const bilder = ["Bild1.png", "Bild2.png"];
         let index = 0;
 
         function wechselBild() {
             index = (index + 1) % bilder.length;
-            document.getElementById("slideshow").src = bilder[index];
+            let img = document.getElementById("slideshow");
+            img.src = bilder[index] + "?t=" + new Date().getTime(); // Cache umgehen
         }
 
-        // Hier stellst du das Intervall ein (30 Sekunden = 30000 Millisekunden)
         setInterval(wechselBild, 30000);
     </script>
 </body>
