@@ -26,17 +26,19 @@
     <img id="slideshow" src="Images/Angebotserfolgsquote - (VK1 HANDEL).png" alt="Slideshow-Bild">
 
     <script>
-        const bilder = ["Images/Angebotserfolgsquote - (VK1 HANDEL).png", "Images/Bild2.png"];
+        const bilder = ["Images/Angebotserfolgsquote - (VK1 HANDEL).png"]; // Nur ein Bild
         let index = 0;
 
         function wechselBild() {
-            index = (index + 1) % bilder.length;
-            let img = document.getElementById("slideshow");
-            img.onerror = () => console.error("Bild konnte nicht geladen werden:", bilder[index]);
-            img.src = bilder[index] + "?t=" + new Date().getTime(); // Cache umgehen
+            if (bilder.length > 1) { // Nur wechseln, wenn es mehr als ein Bild gibt
+                index = (index + 1) % bilder.length;
+                let img = document.getElementById("slideshow");
+                img.onerror = () => console.error("Bild konnte nicht geladen werden:", bilder[index]);
+                img.src = bilder[index] + "?t=" + new Date().getTime(); // Cache umgehen
+            }
         }
 
-        setInterval(wechselBild, 30000);
+        setInterval(wechselBild, 30000); // Bildwechsel alle 30 Sekunden
     </script>
 </body>
 </html>
