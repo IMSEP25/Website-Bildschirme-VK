@@ -10,15 +10,15 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #222;
+            background-color: #fff; /* Hintergrundfarbe auf Weiß */
             margin: 0;
         }
         img {
-            max-width: 80vw;
-            max-height: 80vh;
+            max-width: 95vw; /* Fast die gesamte Breite des Viewports */
+            max-height: 95vh; /* Fast die gesamte Höhe des Viewports */
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            object-fit: contain;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Schatten bleibt dunkel */
+            object-fit: contain; /* Seitenverhältnis beibehalten */
         }
     </style>
 </head>
@@ -26,19 +26,19 @@
     <img id="slideshow" src="Images/Angebotserfolgsquote - (VK1 HANDEL).png" alt="Slideshow-Bild">
 
     <script>
-        const bilder = ["Images/Angebotserfolgsquote - (VK1 HANDEL).png"]; // Nur ein Bild
+        const bilder = ["Images/Angebotserfolgsquote - (VK1 HANDEL).png"]; // Liste der Bilder
         let index = 0;
 
         function wechselBild() {
-            if (bilder.length > 1) { // Nur wechseln, wenn es mehr als ein Bild gibt
-                index = (index + 1) % bilder.length;
-                let img = document.getElementById("slideshow");
-                img.onerror = () => console.error("Bild konnte nicht geladen werden:", bilder[index]);
-                img.src = bilder[index] + "?t=" + new Date().getTime(); // Cache umgehen
-            }
+            const img = document.getElementById("slideshow");
+            index = (index + 1) % bilder.length;
+            const cacheBuster = "?t=" + new Date().getTime(); // Cache umgehen
+            img.src = bilder[index] + cacheBuster;
+            img.onerror = () => console.error("Bild konnte nicht geladen werden:", bilder[index]);
         }
 
-        setInterval(wechselBild, 30000); // Bildwechsel alle 30 Sekunden
+        // Bildwechsel alle 30 Sekunden
+        setInterval(wechselBild, 30000);
     </script>
 </body>
 </html>
