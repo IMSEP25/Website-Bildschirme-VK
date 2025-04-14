@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatische Bildrotation - Seite 2</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff; /* Hintergrundfarbe auf Weiß */
+            margin: 0;
+        }
+        img {
+            max-width: 95vw; /* Fast die gesamte Breite des Viewports */
+            max-height: 95vh; /* Fast die gesamte Höhe des Viewports */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Schatten bleibt dunkel */
+            object-fit: contain; /* Seitenverhältnis beibehalten */
+        }
+    </style>
+</head>
+<body>
+    <img id="slideshow" src="Images/Logistik Bildschirme - (Wareneingang).png" alt="Slideshow-Bild">
+
+    <script>
+        const bilder = ["Images/Logistik Bildschirme - (Wareneingang).png"]; // Liste der Bilder für Seite 2
+        let index = 0;
+
+        function wechselBild() {
+            const img = document.getElementById("slideshow");
+            index = (index + 1) % bilder.length;
+            const cacheBuster = "?t=" + new Date().getTime(); // Cache umgehen
+            img.src = bilder[index] + cacheBuster;
+            img.onerror = () => console.error("Bild konnte nicht geladen werden:", bilder[index]);
+        }
+
+        // Bildwechsel alle 30 Sekunden
+        setInterval(wechselBild, 30000);
+    </script>
+</body>
+</html>
