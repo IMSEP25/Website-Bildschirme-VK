@@ -24,21 +24,5 @@
 </head>
 <body>
     <img id="slideshow" src="Images/Logistik Bildschirme - (Warenausgang).png" alt="Slideshow-Bild">
-
-    <script>
-        const bilder = ["Images/Logistik Bildschirme - (Warenausgang).png"]; // Liste der Bilder für Seite 2
-        let index = 0;
-
-        function wechselBild() {
-            const img = document.getElementById("slideshow");
-            index = (index + 1) % bilder.length;
-            const cacheBuster = "?t=" + new Date().getTime(); // Cache umgehen
-            img.src = bilder[index] + cacheBuster;
-            img.onerror = () => console.error("Bild konnte nicht geladen werden:", bilder[index]);
-        }
-
-        // Bildwechsel alle 30 Sekunden
-        setInterval(wechselBild, 30000);
-    </script>
 </body>
 </html>
