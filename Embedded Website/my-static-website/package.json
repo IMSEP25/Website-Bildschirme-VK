@@ -1,0 +1,21 @@
+{
+  "name": "my-static-website",
+  "version": "1.0.0",
+  "description": "A static website with an embedded Power BI report.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "keywords": [
+    "static",
+    "website",
+    "Power BI",
+    "embed"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
